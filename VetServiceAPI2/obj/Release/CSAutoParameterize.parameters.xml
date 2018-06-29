@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Challenge2Entities-Web.config Connection String" description="Challenge2Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.VetModel.csdl|res://*/Models.VetModel.ssdl|res://*/Models.VetModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=dylan123.database.windows.net;initial catalog=Challenge2;user id=dylan;password=123Dyl34p;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dylan\\Source\\Repos\\ChallengeFINAL2\\VetServiceAPI2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Challenge2Entities']/@connectionString" />
+  </parameter>
+</parameters>

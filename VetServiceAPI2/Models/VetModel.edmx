@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Challenge2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+          </Key>
+          <Property Name="OwnerID" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GivenName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="PetID" />
+          </Key>
+          <Property Name="PetID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="procedureID" />
+          </Key>
+          <Property Name="procedureID" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Treatment">
+          <Key>
+            <PropertyRef Name="treatmentID" />
+          </Key>
+          <Property Name="treatmentID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PetID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="petName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="procedureID" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="notes" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Challenge2.dbo.OwnerVIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OwnerVIEW">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="GivenName" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="OwnerID" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GivenName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Challenge2.dbo.PetVIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PetVIEW">
+          <Key>
+            <PropertyRef Name="PetID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="ownerID" />
+          </Key>
+          <Property Name="PetID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Challenge2.dbo.ProcedureVIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProcedureVIEW">
+          <Key>
+            <PropertyRef Name="procedureID" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="procedureID" Type="int" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Challenge2.dbo.TreatmentVIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TreatmentVIEW">
+          <Key>
+            <PropertyRef Name="treatmentID" />
+            <PropertyRef Name="petName" />
+            <PropertyRef Name="ownerID" />
+            <PropertyRef Name="procedureID" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="notes" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="treatmentID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="petName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ownerID" Type="int" Nullable="false" />
+          <Property Name="procedureID" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="notes" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Challenge2.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PET_ownID">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="OwnerID" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="ownerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TREATMENT_Pet">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TREATMENT_ProcID">
+          <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedure">
+              <PropertyRef Name="procedureID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="procedureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Challenge2ModelStoreContainer">
+          <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Procedure" EntityType="Self.Procedure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treatment" EntityType="Self.Treatment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerVIEW" EntityType="Self.OwnerVIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OwnerVIEW].[OwnerID] AS [OwnerID], 
+    [OwnerVIEW].[Surname] AS [Surname], 
+    [OwnerVIEW].[GivenName] AS [GivenName], 
+    [OwnerVIEW].[Phone] AS [Phone]
+    FROM [dbo].[OwnerVIEW] AS [OwnerVIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PetVIEW" EntityType="Self.PetVIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PetVIEW].[PetID] AS [PetID], 
+    [PetVIEW].[Name] AS [Name], 
+    [PetVIEW].[Type] AS [Type], 
+    [PetVIEW].[ownerID] AS [ownerID]
+    FROM [dbo].[PetVIEW] AS [PetVIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProcedureVIEW" EntityType="Self.ProcedureVIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProcedureVIEW].[procedureID] AS [procedureID], 
+    [ProcedureVIEW].[description] AS [description], 
+    [ProcedureVIEW].[price] AS [price]
+    FROM [dbo].[ProcedureVIEW] AS [ProcedureVIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TreatmentVIEW" EntityType="Self.TreatmentVIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TreatmentVIEW].[treatmentID] AS [treatmentID], 
+    [TreatmentVIEW].[petName] AS [petName], 
+    [TreatmentVIEW].[ownerID] AS [ownerID], 
+    [TreatmentVIEW].[procedureID] AS [procedureID], 
+    [TreatmentVIEW].[date] AS [date], 
+    [TreatmentVIEW].[notes] AS [notes], 
+    [TreatmentVIEW].[price] AS [price]
+    FROM [dbo].[TreatmentVIEW] AS [TreatmentVIEW]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_PET_ownID" Association="Self.FK_PET_ownID">
+            <End Role="Owner" EntitySet="Owner" />
+            <End Role="Pet" EntitySet="Pet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TREATMENT_Pet" Association="Self.FK_TREATMENT_Pet">
+            <End Role="Pet" EntitySet="Pet" />
+            <End Role="Treatment" EntitySet="Treatment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TREATMENT_ProcID" Association="Self.FK_TREATMENT_ProcID">
+            <End Role="Procedure" EntitySet="Procedure" />
+            <End Role="Treatment" EntitySet="Treatment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Challenge2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+          </Key>
+          <Property Name="OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GivenName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pets" Relationship="Self.FK_PET_ownID" FromRole="Owner" ToRole="Pet" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="PetID" />
+          </Key>
+          <Property Name="PetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Owner" Relationship="Self.FK_PET_ownID" FromRole="Pet" ToRole="Owner" />
+          <NavigationProperty Name="Treatments" Relationship="Self.FK_TREATMENT_Pet" FromRole="Pet" ToRole="Treatment" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="procedureID" />
+          </Key>
+          <Property Name="procedureID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Treatments" Relationship="Self.FK_TREATMENT_ProcID" FromRole="Procedure" ToRole="Treatment" />
+        </EntityType>
+        <EntityType Name="Treatment">
+          <Key>
+            <PropertyRef Name="treatmentID" />
+          </Key>
+          <Property Name="treatmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="petName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="procedureID" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Pet" Relationship="Self.FK_TREATMENT_Pet" FromRole="Treatment" ToRole="Pet" />
+          <NavigationProperty Name="Procedure" Relationship="Self.FK_TREATMENT_ProcID" FromRole="Treatment" ToRole="Procedure" />
+        </EntityType>
+        <EntityType Name="OwnerVIEW">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+            <PropertyRef Name="Surname" />
+            <PropertyRef Name="GivenName" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GivenName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetVIEW">
+          <Key>
+            <PropertyRef Name="PetID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="ownerID" />
+          </Key>
+          <Property Name="PetID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProcedureVIEW">
+          <Key>
+            <PropertyRef Name="procedureID" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="procedureID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TreatmentVIEW">
+          <Key>
+            <PropertyRef Name="treatmentID" />
+            <PropertyRef Name="petName" />
+            <PropertyRef Name="ownerID" />
+            <PropertyRef Name="procedureID" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="notes" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="treatmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="petName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ownerID" Type="Int32" Nullable="false" />
+          <Property Name="procedureID" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_PET_ownID">
+          <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+          <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="OwnerID" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="ownerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TREATMENT_Pet">
+          <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pet">
+              <PropertyRef Name="PetID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="PetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TREATMENT_ProcID">
+          <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedure">
+              <PropertyRef Name="procedureID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="procedureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Challenge2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Owners" EntityType="Self.Owner" />
+          <EntitySet Name="Pets" EntityType="Self.Pet" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+          <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+          <EntitySet Name="OwnerVIEWs" EntityType="Self.OwnerVIEW" />
+          <EntitySet Name="PetVIEWs" EntityType="Self.PetVIEW" />
+          <EntitySet Name="ProcedureVIEWs" EntityType="Self.ProcedureVIEW" />
+          <EntitySet Name="TreatmentVIEWs" EntityType="Self.TreatmentVIEW" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_PET_ownID" Association="Self.FK_PET_ownID">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="Pet" EntitySet="Pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TREATMENT_Pet" Association="Self.FK_TREATMENT_Pet">
+            <End Role="Pet" EntitySet="Pets" />
+            <End Role="Treatment" EntitySet="Treatments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TREATMENT_ProcID" Association="Self.FK_TREATMENT_ProcID">
+            <End Role="Procedure" EntitySet="Procedures" />
+            <End Role="Treatment" EntitySet="Treatments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Challenge2ModelStoreContainer" CdmEntityContainer="Challenge2Entities">
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="Challenge2Model.Owner">
+              <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pets">
+            <EntityTypeMapping TypeName="Challenge2Model.Pet">
+              <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procedures">
+            <EntityTypeMapping TypeName="Challenge2Model.Procedure">
+              <MappingFragment StoreEntitySet="Procedure">
+                <ScalarProperty Name="procedureID" ColumnName="procedureID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treatments">
+            <EntityTypeMapping TypeName="Challenge2Model.Treatment">
+              <MappingFragment StoreEntitySet="Treatment">
+                <ScalarProperty Name="treatmentID" ColumnName="treatmentID" />
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="petName" ColumnName="petName" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="procedureID" ColumnName="procedureID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerVIEWs">
+            <EntityTypeMapping TypeName="Challenge2Model.OwnerVIEW">
+              <MappingFragment StoreEntitySet="OwnerVIEW">
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetVIEWs">
+            <EntityTypeMapping TypeName="Challenge2Model.PetVIEW">
+              <MappingFragment StoreEntitySet="PetVIEW">
+                <ScalarProperty Name="PetID" ColumnName="PetID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcedureVIEWs">
+            <EntityTypeMapping TypeName="Challenge2Model.ProcedureVIEW">
+              <MappingFragment StoreEntitySet="ProcedureVIEW">
+                <ScalarProperty Name="procedureID" ColumnName="procedureID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreatmentVIEWs">
+            <EntityTypeMapping TypeName="Challenge2Model.TreatmentVIEW">
+              <MappingFragment StoreEntitySet="TreatmentVIEW">
+                <ScalarProperty Name="treatmentID" ColumnName="treatmentID" />
+                <ScalarProperty Name="petName" ColumnName="petName" />
+                <ScalarProperty Name="ownerID" ColumnName="ownerID" />
+                <ScalarProperty Name="procedureID" ColumnName="procedureID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="Challenge2Model.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

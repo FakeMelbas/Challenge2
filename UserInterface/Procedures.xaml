@@ -1,0 +1,36 @@
+﻿<Page x:Class="UserInterface.Procedures"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UserInterface"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Procedures" Loaded="Open_Page">
+
+    <Grid>
+        
+        <StackPanel>
+            <Button x:Name="Owner" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Owner_Click">Owner Menu</Button>
+            <Label FontWeight="Bold" FontSize="30">PROCEDURES</Label>
+            <DataGrid x:Name="PROC_DG" Margin="0,10,0,0" MinWidth="400" MinHeight="150" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="PROC_DG_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ProcedureID" Binding="{Binding ProcedureID}" Width="*" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*" FontWeight="Bold"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label FontWeight="Bold" FontSize="30">Treatments</Label>
+            <DataGrid x:Name="TREAT_DG" Margin="0,10,0,0" MinWidth="400" MinHeight="150" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="PetID" Binding="{Binding PetName}" Width="*" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Date Of Procedure" Binding="{Binding Date}" Width="*" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="*" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*" FontWeight="Bold"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </StackPanel>
+        
+    </Grid>
+</Page>

@@ -1,0 +1,23 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Owner] (Table)
+       [dbo].[Pet] (Table)
+       [dbo].[Procedure] (Table)
+       [dbo].[Treatment] (Table)
+       [dbo].[FK_PET_ownID] (Foreign Key)
+       [dbo].[FK_TREATMENT_ProcID] (Foreign Key)
+       [dbo].[FK_TREATMENT_Pet] (Foreign Key)
+     Alter
+       [dbo].[TreatmentVIEW] (View)
+
+** Supporting actions

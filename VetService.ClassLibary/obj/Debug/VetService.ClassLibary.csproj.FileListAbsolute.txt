@@ -1,0 +1,9 @@
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\bin\Debug\VetService.ClassLibary.dll
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\bin\Debug\VetService.ClassLibary.pdb
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\obj\Debug\VetService.ClassLibary.csprojResolveAssemblyReference.cache
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\obj\Debug\VetService.ClassLibary.csproj.CoreCompileInputs.cache
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\obj\Debug\VetService.ClassLibary.csproj.CopyComplete
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\obj\Debug\VetService.ClassLibary.dll
+C:\Users\Dylan\Source\Repos\ChallengeFINAL2\VetService.ClassLibary\obj\Debug\VetService.ClassLibary.pdb
